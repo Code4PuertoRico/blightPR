@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+
+
+{% block title %}Detail{% endblock %}
+
+{% block body_block %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div id="carousel-example-generic" data-interval="false" class="carousel slide" data-ride="carousel">
+				<div class="carousel-inner">
+					<div class="item active">
+						<img src="http://placehold.it/1920x600">
+						<div class="carousel-caption">
+							<h2>{{ propiedad.catastro }}</h2>
+							<p>{{ propiedad.comunidad }}</p>
+						</div>
+					</div>
+				</div>
+				<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+				<a class="right carousel-control" href="#carousel-example-generic" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<h1>Detalles</h1>
+			<p> Dueno: {{ propiedad.dueno }} <br>
+				Calle: {{ propiedad.calle }} <br>
+				Numero: {{ propiedad.numero }} <br>
+				Comunidad: {{ propiedad.comunidad }} <br>
+				Cabida: {{ propiedad.cabida }} <br>
+				Tenencia: {{ propiedad.tenencia }} <br>
+				Tipo: {{ propiedad.tipo }} <br>
+				Calificacion: {{ propiedad.calificacion }} <br>
+				Descripcion: {{ propiedad.descripcion }} <br>
+				Inundabilidad: {{ propiedad.inundabilidad }} <br>
+			</p>
+		</div>
+		<div class="col-md-6">
+			<br><img class="img-responsive" src="http://maps.googleapis.com/maps/api/staticmap?center=Tombouctou,Mali&amp;zoom=12&amp;size=400x250&amp;sensor=false">
+		</div>
+	</div>
+	<hr>
+	<div class="row">
+		<div class="col-md-12">
+			<h1>BOT</h1>
+		</div>
+	</div>
+</div>
+{% endblock %}

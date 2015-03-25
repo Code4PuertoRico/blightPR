@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Home{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+
+<!--plug-in for loading shapefiles-->
+<!--<script src="leaflet.shpfile.js"></script> <script src="shp.js"></script>-->
+<script src="{% static 'js/leaflet.shpfile.js' %}"></script>
+<script src="{% static 'js/shp.js' %}"></script>
+
+<style>
+html, body, #map {
+height: 100%;
+}
+body, .navbar {
+padding: 0;
+margin: 0;
+}
+</style>
+{% endblock %}

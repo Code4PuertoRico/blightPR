@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+{% load staticfiles %}
+
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+<!--<link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">-->
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+
+<!--[if lte IE 8]>
+<link rel="stylesheet" type="text/css" href=" leaflet/
+leaflet.ie.css" />
+<![endif]-->
+
+<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+
+<!--plug-in for loading shapefiles-->
+<!--<script src="leaflet.shpfile.js"></script> <script src="shp.js"></script>-->
+<script src="{% static 'js/leaflet.shpfile.js' %}"></script>
+<script src="{% static 'js/shp.js' %}"></script>
+
+
+<style>
+html, body, #map {
+height: 100%;
+}
+body {
+padding: 0;
+margin: 0;
+}
+</style>
+
+<title>Puerto Rico Blight</title>
+</head>
+
+
+<body>
+
+<div id="map"></div>
+
+<script type="text/javascript">
+var map = L.map('map', {
+center: [18.44639, -66.08276],
+zoom: 14
+});
+
+//TILE PROVIDER
+
+//OpenStreetMap:
+L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+attribution: '© OpenStreetMap contributors'
+}).addTo(map);
+
+
+var shpfile = new L.Shapefile("{% static 'media/Desuso2.zip' %}",{
+  onEachFeature:function(feature, layer) { 
+    layer.bindPopup(feature.properties.DIR_NUMERO+"<br>"+feature.properties.DIR_CALLE+"<br>"+feature.properties.COMUNIDAD+"<br><a href='/properties/"+feature.properties.CRIM_CATAS+"'>"+"more details"+"</a>");
+  }
+});
+shpfile.addTo(map);
+
+</script>
+</body>
+
+</html>
